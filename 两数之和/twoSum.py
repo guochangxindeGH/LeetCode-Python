@@ -4,13 +4,23 @@ class Solution(object):
 
     def twoSum(self, nums, target):
         lens = len(nums)
+        j = -1
         for i in range(1, lens):
             temp = nums[:i]
-            breakpoint()
+            # breakpoint()
             if (target - nums[i]) in temp:
                 j = temp.index(target - nums[i])
                 break
-        if j > 0:
+        if j >= 0:
             return [j, i]
 
-    twoSum(nums, nums, target)
+    def twoSum2(self, nums, target):
+        hashmap = {}
+        for index,num in enumerate(nums):
+            hashmap[num] = index
+        for i,num in enumerate(nums):
+            j = hashmap.get(target - num)
+            if j is not None and i != j:
+                return [i,j]
+
+    print(twoSum2(nums, nums, target))
