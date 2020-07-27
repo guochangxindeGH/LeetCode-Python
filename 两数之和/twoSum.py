@@ -14,7 +14,17 @@ class Solution(object):
         if j >= 0:
             return [j, i]
 
+
     def twoSum2(self, nums, target):
+        hashmap = {}
+        for i, num in enumerate(nums):
+            if(hashmap.get(target - num) is not None):
+                return [hashmap.get(target - num), i]
+            hashmap[num] = i
+
+
+
+    def twoSum3(self, nums, target):
         hashmap = {}
         for index,num in enumerate(nums):
             hashmap[num] = index
@@ -22,5 +32,6 @@ class Solution(object):
             j = hashmap.get(target - num)
             if j is not None and i != j:
                 return [i,j]
+
 
     print(twoSum2(nums, nums, target))
