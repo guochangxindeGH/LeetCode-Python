@@ -11,9 +11,13 @@ class Solution:
         dummy = p = ListNode(None)
         s = 0
         while l1 or l2 or s:
-            s = s + (l1.val if l1 else 0) + (l2.val if l2 else 0)
-            breakpoint()
-        return dummy
+            s += (l1.val if l1 else 0) + (l2.val if l2 else 0)
+            p.next = ListNode(s % 10)
+            p = p.next
+            s //= 10
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        return dummy.next
 
     def addTwoNumber2(self, l1: ListNode, l2: ListNode) -> ListNode:
         head = ListNode(0)  # 头结点，无存储，指向链表第一个结点
@@ -34,10 +38,8 @@ class Solution:
             node.next = ListNode(1)
         return head.next
 
-    # print(addTwoNumber2(l1, l1, l2))
-
 
 l1 = ListNode([2, 4, 3])
 l2 = ListNode([5, 6, 4])
 s = Solution()
-print(s.addTwoNumbers(l1, l2))
+print(s.addTwoNumber2(l1, l2))
