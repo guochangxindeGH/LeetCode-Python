@@ -11,4 +11,5 @@ def lengthOfLongestSubstring(self, s: str):
         ans = max(ans, rk + 1 - i)
     return ans
 
+
 print(lengthOfLongestSubstring("abcabcbb", "abcabcbb"))
